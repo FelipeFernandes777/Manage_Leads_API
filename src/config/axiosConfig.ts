@@ -13,3 +13,8 @@ const apiGoogle = axios.create({
         'Content-Type': 'application/json',
     },
 })
+
+export {
+    apiMeta,
+    apiGoogle
+}
