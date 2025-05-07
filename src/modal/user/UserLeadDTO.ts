@@ -1,7 +1,7 @@
-import {IPromotionType} from "../promotion/promotionType";
+import {PromotionTypes} from "./IUserTypes";
 
 export default interface UserLeadDTO {
     name: string;
     phone: string;
-    promotion: IPromotionType;
+    promotion: PromotionTypes;
 }

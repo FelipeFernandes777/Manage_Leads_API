@@ -1,11 +1,11 @@
-import {IPromotionType} from "../promotion/promotionType";
+import {IUserTypes, PromotionTypes} from "./IUserTypes";
 
-export class User {
+export class User{
     private readonly fullName: string
     private readonly phone: string
-    private promotion: IPromotionType
+    private readonly promotion: PromotionTypes;
 
-    constructor(fullName: string, phone: string, promotion: IPromotionType) {
+    constructor(fullName: string, phone: string, promotion: PromotionTypes) {
         this.fullName = fullName;
         this.phone = phone;
         this.promotion = promotion;
@@ -19,7 +19,7 @@ export class User {
         return this.phone;
     }
 
-    get getPromotion():IPromotionType {
+    get getPromotion(): PromotionTypes {
         return this.promotion;
     }
 
