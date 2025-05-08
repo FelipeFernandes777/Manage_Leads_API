@@ -6,7 +6,7 @@ export default class MetaLeadsAPIController {
 
     public async execute (request:Request, response:Response) {
         try {
-            const { name, phone, quantity, promotion_name, price } = request.body;
+            const { name, phone, quantity, promotion_name, price, utm } = request.body;
 
             const result = await this.metaLeadsServices.sendLeadsForMetaApi({
                 name,
@@ -14,7 +14,9 @@ export default class MetaLeadsAPIController {
                 promotion: {
                     name: promotion_name,
                     quantity: quantity,
-                    price: price}
+                    price: price
+                },
+                utm
             });
 
             console.log(result)
@@ -30,6 +32,20 @@ export default class MetaLeadsAPIController {
                 status: 'error',
                 statusCode: response.statusCode
             })
+        }
+    }
+    public async getAllLeads(request:Request, response:Response) {
+        try {
+            const result = await this.metaLeadsServices.getAllLeads();
+
+            response.status(200).json({
+                status: 'sucess',
+                user: result,
+                statusCode: 200,
+            })
+        }catch (e) {
+            console.error("Erro no getAllLeadsController >>>>>>>>>>> " + e + " <<<<<<<<<<")
+            throw new Error(`${e}`);
         }
     }
 }
